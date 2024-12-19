@@ -1,0 +1,93 @@
+.product{
+    padding: 20px;
+    width: 100%;
+}
+
+.product-title-container{
+    flex : 4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.product-add-btn{
+    padding: 10px;
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding-right: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.product-top{
+    display: flex;
+    
+}
+
+.product-topleft,.product-topright{
+    flex : 1;
+}
+
+.productinfo-img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.product-topright{
+    border: 1px solid gray;
+}
+
+.product-update{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.productupload-img img{
+   height: 60px;
+   border-radius: 8px;
+   margin-right: 10px;
+}
+
+.productupload-img{
+    margin-top: 40px;
+}
+
+.product-update-btn{
+    background-color: rgb(113, 180, 238);
+    border: none;
+    border-radius: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.product-bottom-page{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+.product-form{
+    display: flex;
+    flex-direction: column;
+    gap : 20px;
+
+}
+
+.product-name,.product-stock,.product-active{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-name input{
+    border: none;
+    border-bottom: 1px solid black;
+}

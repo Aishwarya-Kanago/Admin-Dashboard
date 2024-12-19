@@ -1,0 +1,55 @@
+.userList{
+    flex : 4;
+}
+
+.userList-info{
+    display: flex;
+    align-items: center;
+    gap:8px;
+}
+
+.userList-img{
+    width : 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.action-icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    height: 100%;
+
+}
+
+/* .data-table h3
+{
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+    margin: 0;
+} */
+
+.data-table{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap : 30px;
+    /* margin-left: 50px; */
+}
+
+.edit-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color:  #007AFF;
+}
+
+.userList-delete-user{
+    color: rgb(143, 6, 33);
+}
+
+

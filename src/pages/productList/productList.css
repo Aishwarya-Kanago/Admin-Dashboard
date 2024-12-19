@@ -1,0 +1,35 @@
+
+.productList-info{
+    display: flex;
+    align-items: center;
+    gap:8px;
+}
+
+.productList-img{
+    width : 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+/* 
+.action-icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+} */
+
+.product-table h3
+{
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+    margin: 0;
+}
+
+.product-table{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 50px;
+}
