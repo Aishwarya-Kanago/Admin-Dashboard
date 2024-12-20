@@ -90,18 +90,26 @@ const UserList = () => {
   return (
     <div className="data-table">
       <div className="userpage-topbar">
-        <h3 className="page-title">Users</h3>
-        <div className="search-user">
-          <label for="">
-            <input type="search" placeholder="Search User" />
-          </label>
-          <div className="status-info">
-            <label>Status</label>
-            <select className="status">
-              <option>All</option>
-              <option>Active</option>
-              <option>Non-Active</option>
-            </select>
+        <div className="flex alignCenter justifySpaceBetween tableHeaderContainer">
+          <h3 className="page-title user-title">Users</h3>
+          <div className="flex alignCenter tableFilterContainer">
+            <div className="searchBarContainer">
+              <SearchIcon className="searchIcon" />
+              <input
+                className="tableFilterContainer__search tableFilterContainer__filter"
+                type="search"
+                placeholder="Search User"
+                onChange={onChangeHandler}
+              />
+            </div>
+            <div className="status-info">
+              <label>Status</label>
+              <select className="status tableFilterContainer__filter">
+                <option>All</option>
+                <option>Active</option>
+                <option>InActive</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -109,7 +117,7 @@ const UserList = () => {
       <Paper
         sx={{
           height: 630,
-          width: "80%",
+          width: "100%",
           padding: 0,
           border: "1px solid #ddd",
           borderRadius: "16px",
