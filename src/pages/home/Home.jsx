@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FeatureInfo from "../featureInfo/FeatureInfo";
 import "./home.css";
 import Chart from "../chart/Chart";
@@ -7,29 +7,20 @@ import Topbar from "../../components/topbar/Topbar";
 import WidgetSm from "../../components/widgetsm/WidgetSm";
 import WidgetLg from "../../components/widgetlg/WidgetLg";
 import axios from "axios";
+import { userContext } from "../../App";
 
 const Home = () => {
-  const [data, setData] = useState([]);
-  const [transaction, setTransaction] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  const getUserData = () => {
-    axios.get("http://127.0.0.1:8000/api/users/").then((res) => {
-      const response = res.data;
-
-      const sortedData = response.sort((a, b) => b.id - a.id);
-      const activeUsers = sortedData.slice(0, 6);
-      setData(activeUsers);
-
-      const topTransations = response
-        .sort((a, b) => b.profile?.transaction - a.profile?.transaction)
-        .slice(0, 6);
-      setTransaction(topTransations);
-    });
-  };
+  const { data, transaction } = useContext(userContext);
 
   useEffect(() => {
-    getUserData();
-  }, []);
+    const sortedData = data.sort((a, b) => b.id - a.id);
+    const activeUsers = sortedData.slice(0, 6);
+    setFilteredData(activeUsers);
+  }, [data]);
+
+  console.log(filteredData, "meow");
 
   return (
     <>
@@ -42,7 +33,7 @@ const Home = () => {
           grid
         />
         <div className="new-joinee-tab">
-          <WidgetSm data={data} />
+          <WidgetSm data={filteredData} />
           <WidgetLg data={transaction} />
         </div>
       </div>

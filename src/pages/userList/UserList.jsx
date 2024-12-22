@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 
-const UserList = () => {
-  const [originalData, setOriginalData] = useState([]);
+const UserList = ({ userData }) => {
+  const [originalData, setOriginalData] = useState(userData);
   const [filteredData, setFilteredData] = useState([]);
 
   const [filterInput, setFilterInput] = useState({
@@ -17,29 +17,12 @@ const UserList = () => {
     statusInput: "All",
   });
 
-  const getUserData = () => {
-    axios.get("http://127.0.0.1:8000/api/users/").then((res) => {
-      const response = res.data;
-      const processedData = [];
-      response.forEach((user) => {
-        const newUserObj = {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          status: user.profile?.status,
-          transaction: `$ ${user.profile?.transaction}`,
-          profile_pic: user.profile?.profile_pic,
-        };
-        processedData.push(newUserObj);
-      });
-      setOriginalData(processedData);
-      setFilteredData(processedData);
-    });
-  };
-
   useEffect(() => {
-    getUserData();
-  }, []);
+    setOriginalData(userData);
+    setFilteredData(userData);
+  }, [userData]);
+
+  console.log(userData, "userData");
 
   const handleDelete = (id) => {
     axios
@@ -59,7 +42,7 @@ const UserList = () => {
   };
 
   useEffect(() => {
-    const filterUser = originalData.filter((item) => {
+    const filterUser = originalData?.filter((item) => {
       const searchCondition =
         item.username
           .toLowerCase()
