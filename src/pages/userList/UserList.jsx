@@ -9,7 +9,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 
 const UserList = () => {
-  const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+
+  const [filterInput, setFilterInput] = useState({
+    searchUSer: "",
+    statusInput: "All",
+  });
 
   const getUserData = () => {
     axios.get("http://127.0.0.1:8000/api/users/").then((res) => {
@@ -26,7 +32,8 @@ const UserList = () => {
         };
         processedData.push(newUserObj);
       });
-      setData(processedData);
+      setOriginalData(processedData);
+      setFilteredData(processedData);
     });
   };
 
@@ -39,12 +46,34 @@ const UserList = () => {
       .delete(`http://127.0.0.1:8000/api/users/${id}`)
       .then((res) => {
         const newData = data.filter((item) => item.id !== id);
-        setData(newData);
+        setOriginalData(newData);
       })
       .catch((err) => {
         alert("Something went wrong");
       });
   };
+
+  const onChangeHandler = (e) => {
+    const newFilters = { ...filterInput, [e.target.name]: e.target.value };
+    setFilterInput(newFilters);
+  };
+
+  useEffect(() => {
+    const filterUser = originalData.filter((item) => {
+      const searchCondition =
+        item.username
+          .toLowerCase()
+          .includes(filterInput.searchUSer.toLowerCase()) ||
+        item.email.toLowerCase().includes(filterInput.searchUSer.toLowerCase());
+      const statusCondtion =
+        filterInput.statusInput === "All" ||
+        item.status.toLowerCase() === filterInput.statusInput.toLowerCase();
+
+      return searchCondition && statusCondtion;
+    });
+
+    setFilteredData(filterUser);
+  }, [filterInput]);
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5, borderRadius: "16px" },
@@ -99,15 +128,22 @@ const UserList = () => {
                 className="tableFilterContainer__search tableFilterContainer__filter"
                 type="search"
                 placeholder="Search User"
+                name="searchUSer"
+                value={filterInput.searchUSer}
                 onChange={onChangeHandler}
               />
             </div>
             <div className="status-info">
               <label>Status</label>
-              <select className="status tableFilterContainer__filter">
-                <option>All</option>
-                <option>Active</option>
-                <option>InActive</option>
+              <select
+                className="status tableFilterContainer__filter"
+                name="statusInput"
+                value={filterInput.statusInput}
+                onChange={onChangeHandler}
+              >
+                <option value="All">All</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
               </select>
             </div>
           </div>
@@ -125,7 +161,7 @@ const UserList = () => {
         }}
       >
         <DataGrid
-          rows={data}
+          rows={filteredData}
           columns={columns}
           disableRowSelectionOnClick
           initialState={{ pagination: { paginationModel } }}

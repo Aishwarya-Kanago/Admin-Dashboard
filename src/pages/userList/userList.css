@@ -111,3 +111,39 @@
   font-size: 1.2rem !important;
   color: gray;
 }
+
+@media (max-width: 600px) {
+  .tableHeaderContainer {
+    padding: 4px;
+  }
+
+  .tableFilterContainer__filter {
+    font-size: 10px;
+  }
+
+  .searchIcon {
+    font-size: 10px !important;
+  }
+  .searchBarContainer {
+    width: 30%;
+  }
+
+  .tableFilterContainer .status-info label {
+    font-size: 12px;
+  }
+  .tableFilterContainer .status-info .status {
+    margin-left: 5px;
+    font-size: 10px;
+  }
+
+  .tableFilterContainer {
+    gap: 12px;
+  }
+
+  .user-title {
+    font-size: 12px !important;
+  }
+  .justifySpaceBetween {
+    gap : 10px;
+}
+}
