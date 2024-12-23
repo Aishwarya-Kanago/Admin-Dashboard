@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import "./widgetsm.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useData } from "../../UserContext";
 
-const WidgetSm = ({ data }) => {
+const WidgetSm = () => {
+  const data = useData();
   const navigate = useNavigate();
 
   const handleClick = (id) => {

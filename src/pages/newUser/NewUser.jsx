@@ -2,8 +2,10 @@ import axios from "axios";
 import "./newUser.css";
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NewUser = () => {
+  const navigate = useNavigate();
   const [newUser, setnewUser] = useState({
     username: "",
     first_name: "",
@@ -68,6 +70,8 @@ const NewUser = () => {
       .then((res) => {
         if (res.status === 201) {
           alert("User created Sucessfully");
+          navigate(`/userList/`);
+          window.location.reload();
         }
       })
       .catch((err) => {

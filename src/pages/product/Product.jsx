@@ -8,11 +8,8 @@ import PublishIcon from "@mui/icons-material/Publish";
 import axios from "axios";
 
 const Product = () => {
-  console.log("hey");
-
   const [product, setProduct] = useState({});
   const { productId } = useParams();
-  console.log(product, "prod");
 
   const getProductData = () => {
     axios

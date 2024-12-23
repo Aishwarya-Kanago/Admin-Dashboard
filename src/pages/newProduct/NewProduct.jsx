@@ -2,8 +2,10 @@ import axios from "axios";
 import "./newproduct.css";
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
+  const navigate = useNavigate();
   const [newProduct, setnewProduct] = useState({});
 
   const onChangeProduct = (e) => {
@@ -28,14 +30,14 @@ const NewProduct = () => {
     setnewProduct(currentProduct);
   };
 
-  console.log(newProduct, "prof");
-
   const createProduct = () => {
     axios
       .post("http://127.0.0.1:8000/api/products/", newProduct)
       .then((res) => {
         if (res.status === 201) {
           alert("Product created Sucessfully");
+          navigate(`/products/`);
+          window.location.reload();
         }
       })
       .catch((err) => {

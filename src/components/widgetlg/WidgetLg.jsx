@@ -1,7 +1,9 @@
 import React from "react";
 import "./widgetlg.css";
+import { useTransaction } from "../../UserContext";
 
-const WidgetLg = ({ data }) => {
+const WidgetLg = () => {
+  const transactionData = useTransaction();
   const Button = ({ type }) => {
     return (
       <button className={"widgetlg-btn widgetlg-btn" + type}>{type}</button>
@@ -22,7 +24,7 @@ const WidgetLg = ({ data }) => {
               <th>Status</th>
             </tr>
           </thead>
-          {data.map((user, idx) => {
+          {transactionData.map((user, idx) => {
             return (
               <tbody key={idx}>
                 <tr>
