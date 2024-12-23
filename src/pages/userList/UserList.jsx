@@ -4,12 +4,14 @@ import Paper from "@mui/material/Paper";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
+import { useList } from "../../UserContext";
 
-const UserList = ({ userData }) => {
-  const [originalData, setOriginalData] = useState(userData);
+const UserList = () => {
+  const { usersList: userList, setUsersList } = useList();
+  const [originalData, setOriginalData] = useState(userList);
   const [filteredData, setFilteredData] = useState([]);
 
   const [filterInput, setFilterInput] = useState({
@@ -18,21 +20,21 @@ const UserList = ({ userData }) => {
   });
 
   useEffect(() => {
-    setOriginalData(userData);
-    setFilteredData(userData);
-  }, [userData]);
-
-  console.log(userData, "userData");
+    setOriginalData(userList);
+    setFilteredData(userList);
+  }, [userList]);
 
   const handleDelete = (id) => {
     axios
       .delete(`http://127.0.0.1:8000/api/users/${id}`)
       .then((res) => {
-        const newData = data.filter((item) => item.id !== id);
-        setOriginalData(newData);
+        const newData = originalData?.filter((item) => item.id !== id);
+        setUsersList(newData);
+        alert("deleted successfully");
+        window.location.reload();
       })
       .catch((err) => {
-        alert("Something went wrong");
+        alert(`Something went wrong : ${err}`);
       });
   };
 

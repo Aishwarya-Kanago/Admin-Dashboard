@@ -46,11 +46,13 @@ const ProductList = () => {
     axios
       .delete(`http://127.0.0.1:8000/api/products/${id}`)
       .then((res) => {
-        const deleteProduct = data.filter((item) => item.id !== id);
+        const deleteProduct = originalData.filter((item) => item.id !== id);
+        setFilteredData(deleteProduct);
         setOriginalData(deleteProduct);
       })
       .catch((err) => {
-        alert("Something went wrong");
+        alert(`Something went wrong ${err}`);
+        console.log(err);
       });
   };
 
@@ -68,7 +70,6 @@ const ProductList = () => {
       const statusCondtion =
         filterInput.statusInput === "All" ||
         item.status.toLowerCase() === filterInput.statusInput.toLowerCase();
-      console.log(item, filterInput, statusCondtion, "hey");
 
       return searchCondition && statusCondtion;
     });
