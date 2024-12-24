@@ -88,7 +88,6 @@ const Product = () => {
                             <p className="name">{product?.name}</p>
                             <p className="price">${product?.price}</p>
                         </div>
-                        {/* create an input for description */}
                         <textarea
                             name="description"
                             className="description"

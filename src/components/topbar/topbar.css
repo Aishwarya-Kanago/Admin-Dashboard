@@ -16,18 +16,3 @@
   height: 30px;
   border-radius: 50%;
 }
-
-@media (max-width: 600px) {
-  /* .topbar-fields{
-        width: 55%;
-       
-    } */
-
-    /* .topbar-fields .icon {
-        font-size: 18px;
-    }
-
-    .topbar-fields img{
-        height: 20px;
-    } */
-}

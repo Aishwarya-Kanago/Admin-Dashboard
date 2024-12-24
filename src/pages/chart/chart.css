@@ -1,15 +1,9 @@
 .chart-main {
   display: flex;
   flex-direction: column;
-  /* margin-top: 40px; */
-  /* margin-left: 40px; */
 }
 
 .chart-container {
-  /* margin-right: 65px; */
-  /* border: 1px solid grey; */
-  /* font-size: 20px; */
-  /* font-weight: 600; */
   background-color: #f9f9fa;
   border-radius: 16px;
   padding: 24px;

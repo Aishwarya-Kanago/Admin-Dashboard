@@ -45,7 +45,6 @@ const NewProduct = () => {
                 const error_key = Object.keys(res.data)[0];
                 const error_message = res.data[error_key];
                 alert(`${error_key}:${error_message}`);
-                console.log(res);
             });
     };
 

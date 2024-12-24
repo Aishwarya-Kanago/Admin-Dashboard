@@ -55,7 +55,6 @@ const ProductList = () => {
       })
       .catch((err) => {
         alert(`Something went wrong ${err}`);
-        console.log(err);
       });
   };
 
