@@ -1,21 +1,18 @@
-.user-page-box{
+.user-page-box {
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 100vh;
     align-items: center;
-    gap : 30px;
+    gap: 30px;
+    margin-right: 30px;
 }
 
-.user-top-bar{
-    width : 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-right:35px;
+.user-top-bar {
+    width: 100%;
 }
 
-.create-btn{
-    width : 80px;
+.create-btn {
+    width: 80px;
     border: none;
     padding: 5px;
     background-color: teal;
@@ -24,126 +21,187 @@
     cursor: pointer;
 }
 
-.user{
+.user {
     display: flex;
     width: 100%;
     justify-content: center;
-    align-items: center;
-    gap : 40px;
+    gap: 40px;
 }
 
-.user-main-info{
-    display: flex;
-    flex-direction: column;
-    gap : 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;          
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); 
-    height: 50vh;
-    padding: 40px;
-    padding-top: 20px;
-}
-
-.user-main-info{
-    flex :1;
-}
-
-.edit-userinfo{
-    flex : 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #f4f4f4;
-    border-radius: 8px;          
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); 
-    height: 50vh;
-    padding: 40px;
-    margin-right: 35px;
-    padding-top: 20px;
-}
-
-.user-img img{
-    height: 40px; 
-    border-radius: 50%;  
-    width: 40px; 
+.profile-img {
+    border-radius: 8px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
 }
 
-.user-img{
-    display: flex;
-    gap : 20px;
-    align-items: center;
-}
-
-.account-details,.contact-details{
+.user-main-info {
     display: flex;
     flex-direction: column;
-    gap : 20px;
-}
-
-.account-name,.account-date,.contact-number,.email-info,.work-location{
-    display: flex;
-    gap : 10px;
+    gap: 20px;
+    border-radius: 8px;
     align-items: center;
+    padding: 20px;
+    box-shadow: -1px 3px 7px 1px rgb(213 213 213 / 71%);
 }
 
-.account-details,.contact-details p{
-    font-weight: 300;
+.user-main-info svg {
+    font-size: 16px;
 }
 
-.edit-box{
+.user-main-info-section-2 {
+    margin-top: 30px;
+    align-items: flex-start;
+}
+
+.edit-userinfo {
+    flex: 2;
     display: flex;
     flex-direction: column;
-    gap:25px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    box-shadow: -1px 3px 7px 1px rgb(213 213 213 / 71%);
+}
+
+.user-info-col-1 {
     flex: 1;
 }
 
-.edit{
+.user-img img {
+    height: 40px;
+    border-radius: 50%;
+    width: 40px;
+    object-fit: cover;
+}
+
+.user-img {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.account-details,
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.account-name,
+.account-date,
+.contact-number,
+.email-info,
+.work-location {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.edit-box {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.edit {
     font-size: 25px;
     font-weight: 500;
 }
 
-.user-info-input{
+.user-info-input {
     display: flex;
-    flex-direction: column;
-    gap : 20px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.username-input,.fullname-input,.email-input,.phone-input,.address-input{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    gap : 5px;
-    font-size: 15px;
-    font-weight: 400;
-}
-
-.input-data{
-    border : none;
-    background-color: whitesmoke;
-    border-bottom: 1px solid black;
-}
-
-.user-update{
+.user-update {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.upload-img img{
-   height: 120px;
-   border-radius: 8px;
-   margin-right: 10px;
-}
-
-.upload-img{
-    margin-top: 40px;
-}
-
-.user-update-btn{
-    background-color: rgb(113, 180, 238);
+.update-btn {
+    background-color: teal;
+    color: white;
+    width: 10rem;
     border: none;
     border-radius: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-details .name {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.user-details .role {
+    font-size: 16px;
+    color: gray;
+}
+
+.details-sub-title {
+    font-size: 16px;
+    font-weight: 600;
+    /* color: gray; */
+}
+
+.details-info-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+}
+
+.profile-pic-container {
+    position: relative;
+    width: 100%;
+}
+
+.profile-pic-container .edit-profile-pic {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.profile-pic-container .edit-profile-pic svg {
+    cursor: pointer;
+}
+
+.user-info-input-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* align-items: center; */
+}
+
+.user-info-input-flex span {
+    font-size: 14px;
+    color: gray;
+    width: 10rem;
+    font-weight: 500;
+}
+
+.user-info-input-flex input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid lightgray;
+    font-size: 14px;
+    width: 20rem;
+    font-weight: 500;
 }

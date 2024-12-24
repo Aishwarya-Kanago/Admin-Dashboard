@@ -1,56 +1,58 @@
-.newuser-info{
+.newuser-info {
     display: flex;
     flex-direction: column;
-    gap : 30px;
-    width: 60%;
-    margin-left: 30px;
+    gap: 30px;
+    padding: 10px;
+    /* box-shadow: -2px 3px 13px #f0f0f0; */
 }
 
-.newuser-form{
+.newuser-form {
     display: flex;
     flex-wrap: wrap;
-    gap : 30px;
+    gap: 30px;
 }
 
-.newuser-item{
+.newuser-item {
     width: 400px;
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
 }
 
-.newuser-item>label{
+.newuser-item > label {
     font-weight: 700;
     color: gray;
 }
 
-.newuser-item input{
+.newuser-item input {
     padding: 10px;
     border-radius: 6px;
     border: 1px solid gray;
     font-size: 14px;
 }
 
-.gender-options{
+.gender-options {
     display: flex;
     gap: 10px;
     color: grey;
+    padding: 10px;
     font-size: 18px;
 }
 
-.active-options{
+.active-options {
     padding: 10px;
     border-radius: 6px;
     font-size: 14px;
     color: gray;
 }
 
-.newuser-create-btn{
+.newuser-create-btn {
     width: 15%;
     padding: 8px;
     border-radius: 8px;
     color: white;
-    background-color: rgb(105, 161, 210);
+    background-color: #4caf50;
     border: none;
     margin-top: 5px;
+    cursor: pointer;
 }
