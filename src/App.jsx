@@ -6,17 +6,13 @@ import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
 import NewProduct from "./pages/newProduct/newProduct";
 import "./styles.css";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import React from "react";
 import Topbar from "./components/topbar/Topbar";
 import Product from "./pages/product/Product";
-import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 
 function App() {
-
   return (
     <Router>
       <UserContextProvider>

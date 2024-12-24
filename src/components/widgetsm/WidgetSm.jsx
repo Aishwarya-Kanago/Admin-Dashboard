@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import "./widgetsm.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useData } from "../../UserContext";
 
 const WidgetSm = () => {

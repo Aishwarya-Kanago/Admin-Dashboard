@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import FeatureInfo from "../featureInfo/FeatureInfo";
 import "./home.css";
 import Chart from "../chart/Chart";
 import { userData } from "../../UserData";
-import Topbar from "../../components/topbar/Topbar";
 import WidgetSm from "../../components/widgetsm/WidgetSm";
 import WidgetLg from "../../components/widgetlg/WidgetLg";
-import axios from "axios";
-import { UserContextProvider } from "../../UserContext";
 
 const Home = () => {
   return (

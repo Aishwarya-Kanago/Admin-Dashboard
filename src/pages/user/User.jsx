@@ -6,8 +6,7 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import React, { useEffect, useState } from "react";
 import CreateIcon from "@mui/icons-material/Create";
-
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const User = () => {
