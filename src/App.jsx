@@ -16,9 +16,6 @@ import axios from "axios";
 import { UserContextProvider } from "./UserContext";
 
 function App() {
-  // const data = useData();
-  // const transaction = useTransaction();
-  // const userList = useList();
 
   return (
     <Router>

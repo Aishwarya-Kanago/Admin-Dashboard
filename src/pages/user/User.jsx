@@ -11,254 +11,236 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const User = () => {
-    const [data, setData] = useState({});
-    const { userID } = useParams();
+  const [data, setData] = useState({});
+  const { userID } = useParams();
 
-    const getUserData = () => {
-        axios.get(`http://127.0.0.1:8000/api/users/${userID}/`).then((res) => {
-            const response = res.data;
-            setData(response);
-        });
-    };
+  const getUserData = () => {
+    axios.get(`http://127.0.0.1:8000/api/users/${userID}/`).then((res) => {
+      const response = res.data;
+      setData(response);
+    });
+  };
 
-    useEffect(() => {
-        getUserData();
-    }, []);
+  useEffect(() => {
+    getUserData();
+  }, []);
 
-    const inputChangeHandler = (e) => {
-        const profileKeys = [
-            "account_open_date",
-            "phone_number",
-            "location",
-            "designation",
-            "bio",
-            "profile_pic",
-        ];
-        const oldData = { ...data };
-        let inputValue = e.target.value;
+  const inputChangeHandler = (e) => {
+    const profileKeys = [
+      "account_open_date",
+      "phone_number",
+      "location",
+      "designation",
+      "bio",
+      "profile_pic",
+    ];
+    const oldData = { ...data };
+    let inputValue = e.target.value;
 
-        if (e.target.type === "file") {
-            const file = e.target.files[0];
-            if (file) {
-                const localImageUrl = URL.createObjectURL(file);
-                oldData.profile[e.target.name] = localImageUrl;
-                setData(oldData);
-            }
-            return;
-        }
-
-        if (profileKeys.includes(e.target.name)) {
-            if (e.target.name === "account_open_date") {
-                inputValue = new Date(inputValue).getTime();
-            }
-            oldData.profile[e.target.name] = inputValue;
-        } else {
-            oldData[e.target.name] = inputValue;
-        }
-
+    if (e.target.type === "file") {
+      const file = e.target.files[0];
+      if (file) {
+        const localImageUrl = URL.createObjectURL(file);
+        oldData.profile[e.target.name] = localImageUrl;
         setData(oldData);
-    };
+      }
+      return;
+    }
 
-    const updateHandler = () => {
-        axios
-            .put(`http://127.0.0.1:8000/api/users/${userID}/`, data)
-            .then((res) => {
-                if (res.status == 200) {
-                    alert("Data updated Sucessfully");
-                }
-            });
-    };
+    if (profileKeys.includes(e.target.name)) {
+      if (e.target.name === "account_open_date") {
+        inputValue = new Date(inputValue).getTime();
+      }
+      oldData.profile[e.target.name] = inputValue;
+    } else {
+      oldData[e.target.name] = inputValue;
+    }
 
-    return (
-        <>
-            <div className="user-page-box">
-                <div className="user-top-bar">
-                    <h3 className="page-title">Edit User</h3>
+    setData(oldData);
+  };
+
+  const updateHandler = () => {
+    axios
+      .put(`http://127.0.0.1:8000/api/users/${userID}/`, data)
+      .then((res) => {
+        if (res.status == 200) {
+          alert("Data updated Sucessfully");
+        }
+      });
+  };
+
+  return (
+    <>
+      <div className="user-page-box">
+        <div className="user-top-bar">
+          <h3 className="page-title">Edit User</h3>
+        </div>
+
+        <div className="user">
+          <div className="user-info-col-1">
+            <div className="user-main-info">
+              <div className="profile-pic-container">
+                <img
+                  className="profile-img"
+                  src={data.profile?.profile_pic}
+                  alt="user-img"
+                />
+                <div className="edit-profile-pic">
+                  <label htmlFor="file">
+                    <CreateIcon />
+                  </label>
+                  <input
+                    type="file"
+                    id="file"
+                    name="profile_pic"
+                    style={{ display: "none" }}
+                    onChange={inputChangeHandler}
+                  />
                 </div>
-
-                <div className="user">
-                    <div className="user-info-col-1">
-                        <div className="user-main-info">
-                            <div className="profile-pic-container">
-                                <img
-                                    className="profile-img"
-                                    src={data.profile?.profile_pic}
-                                    alt="user-img"
-                                />
-                                <div className="edit-profile-pic">
-                                    <label htmlFor="file">
-                                        <CreateIcon />
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="file"
-                                        name="profile_pic"
-                                        style={{ display: "none" }}
-                                        onChange={inputChangeHandler}
-                                    />
-                                </div>
-                            </div>
-                            <div className="user-details">
-                                <p className="name">
-                                    {data.first_name} {data.last_name}
-                                </p>
-                                <p className="role">
-                                    {data.profile?.designation}
-                                </p>
-                            </div>
-                        </div>
-                        <div className="user-main-info user-main-info-section-2">
-                            <div className="account-details">
-                                <p className="details-sub-title">
-                                    Account Details
-                                </p>
-                                <div className="account-name">
-                                    <PermIdentityIcon />
-                                    <span className="details-info-text">
-                                        {data.username}
-                                    </span>
-                                </div>
-                                <div className="account-date">
-                                    <CalendarTodayIcon />
-                                    <span className="details-info-text">
-                                        {data.profile?.account_open_date
-                                            ? new Date(
-                                                  parseInt(
-                                                      data.profile
-                                                          ?.account_open_date
-                                                  )
-                                              ).toLocaleDateString()
-                                            : ""}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div className="contact-details">
-                                <p className="details-sub-title">
-                                    Contact Details
-                                </p>
-                                <div className="contact-number">
-                                    <PhoneIcon />
-                                    <span className="details-info-text">
-                                        {data.profile?.phone_number}
-                                    </span>
-                                </div>
-                                <div className="email-info">
-                                    <EmailOutlinedIcon />
-                                    <span className="details-info-text">
-                                        {data.email}
-                                    </span>
-                                </div>
-                                <div className="work-location">
-                                    <LocationOnOutlinedIcon />
-                                    <span className="details-info-text">
-                                        {data.profile?.location}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="edit-userinfo">
-                        <div className="edit-box">
-                            <p className="edit">Edit</p>
-                            <div className="user-info-input">
-                                <div className="user-info-input-flex">
-                                    <span>User Name</span>
-                                    <input
-                                        type="text"
-                                        className="input-data"
-                                        name="username"
-                                        value={data.username}
-                                        onChange={inputChangeHandler}
-                                    />
-                                </div>
-                                <div className="user-info-input-flex">
-                                    <span>Email</span>
-                                    <input
-                                        type="text"
-                                        className="input-data"
-                                        value={data.email}
-                                        name="email"
-                                        onChange={inputChangeHandler}
-                                    />
-                                </div>
-                                <div className="user-info-input-flex">
-                                    <span>First Name</span>
-                                    <input
-                                        type="text"
-                                        className="input-data"
-                                        name="first_name"
-                                        value={data.first_name}
-                                        onChange={inputChangeHandler}
-                                    />
-                                </div>
-                                <div className="user-info-input-flex">
-                                    <span>Last Name</span>
-                                    <input
-                                        type="text"
-                                        className="input-data"
-                                        name="last_name"
-                                        value={data.last_name}
-                                        onChange={inputChangeHandler}
-                                    />
-                                </div>
-
-                                <div className="user-info-input-flex">
-                                    <span>Account Created At</span>
-                                    <input
-                                        type="date"
-                                        className="input-data"
-                                        name="account_open_date"
-                                        value={
-                                            data.profile?.account_open_date
-                                                ? new Date(
-                                                      parseInt(
-                                                          data.profile
-                                                              ?.account_open_date
-                                                      )
-                                                  )
-                                                      .toISOString()
-                                                      .split("T")[0]
-                                                : ""
-                                        }
-                                        onChange={inputChangeHandler}
-                                    />
-                                </div>
-                                <div className="user-info-input-flex">
-                                    <span>Contact</span>
-                                    <input
-                                        type="text"
-                                        className="input-data"
-                                        name="phone_number"
-                                        value={data.profile?.phone_number}
-                                        onChange={inputChangeHandler}
-                                    />
-                                </div>
-                                <div className="user-info-input-flex">
-                                    <span>Address</span>
-                                    <input
-                                        type="text"
-                                        className="input-data"
-                                        name="location"
-                                        value={data.profile?.location}
-                                        onChange={inputChangeHandler}
-                                    />
-                                </div>
-                            </div>
-                            <button
-                                type="submit"
-                                className="update-btn"
-                                onClick={updateHandler}
-                            >
-                                Update
-                            </button>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <div className="user-details">
+                <p className="name">
+                  {data.first_name} {data.last_name}
+                </p>
+                <p className="role">{data.profile?.designation}</p>
+              </div>
             </div>
-        </>
-    );
+            <div className="user-main-info user-main-info-section-2">
+              <div className="account-details">
+                <p className="details-sub-title">Account Details</p>
+                <div className="account-name">
+                  <PermIdentityIcon />
+                  <span className="details-info-text">{data.username}</span>
+                </div>
+                <div className="account-date">
+                  <CalendarTodayIcon />
+                  <span className="details-info-text">
+                    {data.profile?.account_open_date
+                      ? new Date(
+                          parseInt(data.profile?.account_open_date)
+                        ).toLocaleDateString()
+                      : ""}
+                  </span>
+                </div>
+              </div>
+
+              <div className="contact-details">
+                <p className="details-sub-title">Contact Details</p>
+                <div className="contact-number">
+                  <PhoneIcon />
+                  <span className="details-info-text">
+                    {data.profile?.phone_number}
+                  </span>
+                </div>
+                <div className="email-info">
+                  <EmailOutlinedIcon />
+                  <span className="details-info-text">{data.email}</span>
+                </div>
+                <div className="work-location">
+                  <LocationOnOutlinedIcon />
+                  <span className="details-info-text">
+                    {data.profile?.location}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="edit-userinfo">
+            <div className="edit-box">
+              <p className="edit">Edit</p>
+              <div className="user-info-input">
+                <div className="user-info-input-flex">
+                  <span>User Name</span>
+                  <input
+                    type="text"
+                    className="input-data"
+                    name="username"
+                    value={data.username}
+                    onChange={inputChangeHandler}
+                  />
+                </div>
+                <div className="user-info-input-flex">
+                  <span>Email</span>
+                  <input
+                    type="text"
+                    className="input-data"
+                    value={data.email}
+                    name="email"
+                    onChange={inputChangeHandler}
+                  />
+                </div>
+                <div className="user-info-input-flex">
+                  <span>First Name</span>
+                  <input
+                    type="text"
+                    className="input-data"
+                    name="first_name"
+                    value={data.first_name}
+                    onChange={inputChangeHandler}
+                  />
+                </div>
+                <div className="user-info-input-flex">
+                  <span>Last Name</span>
+                  <input
+                    type="text"
+                    className="input-data"
+                    name="last_name"
+                    value={data.last_name}
+                    onChange={inputChangeHandler}
+                  />
+                </div>
+
+                <div className="user-info-input-flex">
+                  <span>Account Created At</span>
+                  <input
+                    type="date"
+                    className="input-data"
+                    name="account_open_date"
+                    value={
+                      data.profile?.account_open_date
+                        ? new Date(parseInt(data.profile?.account_open_date))
+                            .toISOString()
+                            .split("T")[0]
+                        : ""
+                    }
+                    onChange={inputChangeHandler}
+                  />
+                </div>
+                <div className="user-info-input-flex">
+                  <span>Contact</span>
+                  <input
+                    type="text"
+                    className="input-data"
+                    name="phone_number"
+                    value={data.profile?.phone_number}
+                    onChange={inputChangeHandler}
+                  />
+                </div>
+                <div className="user-info-input-flex">
+                  <span>Address</span>
+                  <input
+                    type="text"
+                    className="input-data"
+                    name="location"
+                    value={data.profile?.location}
+                    onChange={inputChangeHandler}
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="update-btn"
+                onClick={updateHandler}
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default User;

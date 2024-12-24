@@ -20,12 +20,14 @@ const WidgetSm = () => {
       {data.map((user, idx) => {
         return (
           <div className="new-joinee-info" key={idx}>
-            <img src={user.profile.profile_pic} alt="profile-pic-joinee" />
-            <div className="name-and-position">
-              <h3>
-                {user.first_name} {user.last_name}
-              </h3>
-              <p>{user.profile.designation}</p>
+            <div className="new-joinee-name new-joinee-info">
+              <img src={user.profile.profile_pic} alt="profile-pic-joinee" />
+              <div className="name-and-position">
+                <h3>
+                  {user.first_name} {user.last_name}
+                </h3>
+                <p>{user.profile.designation}</p>
+              </div>
             </div>
             <button
               className="display-btn"
