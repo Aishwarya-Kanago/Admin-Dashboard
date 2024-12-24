@@ -1,6 +1,5 @@
 .home-contents {
   display: flex;
-  /* height: 20vh; */
   align-items: center;
   gap: 40px;
 }
@@ -12,7 +11,6 @@
   flex-direction: column;
   gap: 15px;
   flex: 1;
-  /* border: 1px solid rgb(200, 198, 198); */
   cursor: pointer;
   background-color: #edeefc;
   border-radius: 16px;
@@ -22,10 +20,6 @@
 
 .sales-home {
   background-color: #e6f1fd;
-}
-
-.cost-home {
-  /* margin-right: 70px; */
 }
 
 .moeny-container-title {
@@ -49,10 +43,6 @@
   display: flex;
   align-items: center;
   font-size: 15px;
-}
-
-.revenue-home {
-  /* margin-left: 40px; */
 }
 
 .moeney-container-sub {

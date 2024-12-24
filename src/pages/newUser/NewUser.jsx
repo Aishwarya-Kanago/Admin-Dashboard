@@ -54,14 +54,12 @@ const NewUser = () => {
     if (profileKeys.includes(e.target.name)) {
       if (e.target.name === "account_open_date") {
         inputValue = new Date(inputValue).getTime();
-        console.log(inputValue, "date");
       }
       currentData.profile[e.target.name] = inputValue;
     } else {
       currentData[e.target.name] = inputValue;
     }
     setnewUser(currentData);
-    console.log(currentData, "looooo");
   };
 
   const createUserHandler = () => {
@@ -79,7 +77,6 @@ const NewUser = () => {
         const error_message = res.data[Object.keys(res.data)[0]];
         alert(error_message);
       });
-    console.log(newUser, "newuser");
   };
 
   return (

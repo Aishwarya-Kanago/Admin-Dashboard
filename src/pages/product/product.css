@@ -185,7 +185,6 @@
   color: white;
 }
 
-/* random color for each tag inside tags */
 .product-details .tags .tag:nth-child(1) {
   background-color: cornflowerblue;
 }

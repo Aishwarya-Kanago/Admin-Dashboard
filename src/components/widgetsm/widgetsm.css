@@ -1,10 +1,7 @@
 .new-joinee-list {
   display: flex;
-  /* flex :1; */
   flex-direction: column;
-  /* margin-top: 50px; */
   gap: 30px;
-  /* margin-left: 40px; */
   padding: 30px;
   background-color: #f9f9fa;
   border-radius: 16px;
@@ -28,7 +25,6 @@
   font-size: 20px;
   font-weight: 400;
   color: black;
-  /* margin-left: 0; */
 }
 
 .name-and-position p {
@@ -48,12 +44,6 @@
   background-image: linear-gradient(to right, #007aff, #4e8ddb);
   color: white;
 }
-
-/* .widgetsm-title h3{
-    font-weight: 400;
-    font-size: 25px;
-    color: black;
-} */
 
 @media (max-width: 600px) {
   .new-joinee-list {
