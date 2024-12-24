@@ -72,6 +72,7 @@
 @media (max-width: 600px) {
   .page-title {
     font-size: 20px;
+    margin-left: 0;
   }
 
   .moeny-container-title,

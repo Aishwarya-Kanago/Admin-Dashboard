@@ -18,20 +18,29 @@ import MessageIcon from "@mui/icons-material/Message";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import ReportIcon from "@mui/icons-material/Report";
 import MenuIcon from "@mui/icons-material/Menu";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 const Sidebar = () => {
   const [menuOpen, setmenuOpen] = useState(false);
 
   return (
     <>
-      <div className={`nav-bar-icon ${menuOpen ? "icon-open" : ""}`}>
-        <MenuIcon
-          onClick={() => setmenuOpen(!menuOpen)}
-          className="menu-icon"
-        />
-      </div>
+      <ClickAwayListener onClickAway={() => setmenuOpen(false)}>
+        <div
+          className={`nav-bar-icon ${menuOpen ? "icon-open" : ""}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <MenuIcon
+            onClick={() => setmenuOpen(!menuOpen)}
+            className="menu-icon"
+          />
+        </div>
+      </ClickAwayListener>
 
-      <div className={`main-menu ${menuOpen ? "open" : ""}`}>
+      <div
+        className={`main-menu ${menuOpen ? "open" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="logo">
           <img
             src="https://i.pinimg.com/550x/a9/2a/b5/a92ab56a225cef3bf88e624df4bcf025.jpg"
