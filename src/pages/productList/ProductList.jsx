@@ -22,23 +22,27 @@ const ProductList = () => {
     statusInput: "All",
   });
   const getProductData = () => {
-    axios.get("http://127.0.0.1:8000/api/products/").then((res) => {
-      const response = res.data;
-      const requiredFields = [];
-      response.forEach((product) => {
-        const newProductObj = {
-          id: product.id,
-          name: product.name,
-          stock: product.stock,
-          status: product.status,
-          price: `$ ${product.price}`,
-          product_pic: product.product_pic,
-        };
-        requiredFields.push(newProductObj);
+    axios
+      .get(
+        "https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/"
+      )
+      .then((res) => {
+        const response = res.data;
+        const requiredFields = [];
+        response.forEach((product) => {
+          const newProductObj = {
+            id: product.id,
+            name: product.name,
+            stock: product.stock,
+            status: product.status,
+            price: `$ ${product.price}`,
+            product_pic: product.product_pic,
+          };
+          requiredFields.push(newProductObj);
+        });
+        setOriginalData(requiredFields);
+        setFilteredData(requiredFields);
       });
-      setOriginalData(requiredFields);
-      setFilteredData(requiredFields);
-    });
   };
 
   useEffect(() => {
@@ -47,7 +51,9 @@ const ProductList = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://127.0.0.1:8000/api/products/${id}`)
+      .delete(
+        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/${id}`
+      )
       .then((res) => {
         const deleteProduct = originalData.filter((item) => item.id !== id);
         setFilteredData(deleteProduct);

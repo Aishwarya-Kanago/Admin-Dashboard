@@ -30,33 +30,37 @@ export const UserContextProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
 
   const getUserData = () => {
-    axios.get("http://127.0.0.1:8000/api/users/").then((res) => {
-      const response = res.data;
-      setData(response);
+    axios
+      .get(
+        "https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/"
+      )
+      .then((res) => {
+        const response = res.data;
+        setData(response);
 
-      const sortedData = response.sort((a, b) => b.id - a.id);
-      const activeUsers = sortedData.slice(0, 6);
-      setFilteredData(activeUsers);
+        const sortedData = response.sort((a, b) => b.id - a.id);
+        const activeUsers = sortedData.slice(0, 6);
+        setFilteredData(activeUsers);
 
-      const topTransations = response
-        .sort((a, b) => b.profile?.transaction - a.profile?.transaction)
-        .slice(0, 6);
-      setTransaction(topTransations);
+        const topTransations = response
+          .sort((a, b) => b.profile?.transaction - a.profile?.transaction)
+          .slice(0, 6);
+        setTransaction(topTransations);
 
-      const processedData = [];
-      response.forEach((user) => {
-        const newUserObj = {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          status: user.profile?.status,
-          transaction: `$ ${user.profile?.transaction}`,
-          profile_pic: user.profile?.profile_pic,
-        };
-        processedData.push(newUserObj);
+        const processedData = [];
+        response.forEach((user) => {
+          const newUserObj = {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            status: user.profile?.status,
+            transaction: `$ ${user.profile?.transaction}`,
+            profile_pic: user.profile?.profile_pic,
+          };
+          processedData.push(newUserObj);
+        });
+        setUsersList(processedData);
       });
-      setUsersList(processedData);
-    });
   };
 
   useEffect(() => {

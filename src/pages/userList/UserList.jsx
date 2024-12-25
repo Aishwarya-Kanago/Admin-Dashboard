@@ -29,7 +29,9 @@ const UserList = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://127.0.0.1:8000/api/users/${id}`)
+      .delete(
+        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/${id}`
+      )
       .then((res) => {
         const newData = originalData?.filter((item) => item.id !== id);
         setUsersList(newData);

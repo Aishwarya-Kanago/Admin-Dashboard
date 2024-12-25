@@ -14,10 +14,14 @@ const User = () => {
   const { userID } = useParams();
 
   const getUserData = () => {
-    axios.get(`http://127.0.0.1:8000/api/users/${userID}/`).then((res) => {
-      const response = res.data;
-      setData(response);
-    });
+    axios
+      .get(
+        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/${userID}/`
+      )
+      .then((res) => {
+        const response = res.data;
+        setData(response);
+      });
   };
 
   useEffect(() => {
@@ -60,7 +64,10 @@ const User = () => {
 
   const updateHandler = () => {
     axios
-      .put(`http://127.0.0.1:8000/api/users/${userID}/`, data)
+      .put(
+        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/${userID}/`,
+        data
+      )
       .then((res) => {
         if (res.status == 200) {
           alert("Data updated Sucessfully");

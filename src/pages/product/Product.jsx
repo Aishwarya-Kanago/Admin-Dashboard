@@ -12,7 +12,9 @@ const Product = () => {
 
   const getProductData = () => {
     axios
-      .get(`http://127.0.0.1:8000/api/products/${productId}/`)
+      .get(
+        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/${productId}/`
+      )
       .then((res) => {
         const response = res.data;
         setProduct(response);
@@ -42,7 +44,10 @@ const Product = () => {
 
   const updateHandler = (e) => {
     axios
-      .put(`http://127.0.0.1:8000/api/products/${productId}/`, product)
+      .put(
+        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/${productId}/`,
+        product
+      )
       .then((res) => {
         if (res.status == 200) {
           alert("Product updated Sucessfully");

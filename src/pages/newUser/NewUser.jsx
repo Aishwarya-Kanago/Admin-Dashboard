@@ -63,7 +63,10 @@ const NewUser = () => {
 
   const createUserHandler = () => {
     axios
-      .post("http://127.0.0.1:8000/api/users/", newUser)
+      .post(
+        "https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/",
+        newUser
+      )
       .then((res) => {
         if (res.status === 201) {
           alert("User created Sucessfully");
