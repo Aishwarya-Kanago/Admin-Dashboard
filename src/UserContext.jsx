@@ -31,9 +31,7 @@ export const UserContextProvider = ({ children }) => {
 
   const getUserData = () => {
     axios
-      .get(
-        "https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/"
-      )
+      .get("https://admin-dashboard-backend-tau.vercel.app/api/users/")
       .then((res) => {
         const response = res.data;
         setData(response);

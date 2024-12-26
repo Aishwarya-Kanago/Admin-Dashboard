@@ -32,7 +32,7 @@ const NewProduct = () => {
   const createProduct = () => {
     axios
       .post(
-        "https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/",
+        "https://admin-dashboard-backend-tau.vercel.app/api/products/",
         newProduct
       )
       .then((res) => {

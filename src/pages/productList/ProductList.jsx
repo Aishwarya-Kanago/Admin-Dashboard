@@ -23,9 +23,7 @@ const ProductList = () => {
   });
   const getProductData = () => {
     axios
-      .get(
-        "https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/"
-      )
+      .get("https://admin-dashboard-backend-tau.vercel.app/api/products/")
       .then((res) => {
         const response = res.data;
         const requiredFields = [];
@@ -52,7 +50,7 @@ const ProductList = () => {
   const handleDelete = (id) => {
     axios
       .delete(
-        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/${id}`
+        `https://admin-dashboard-backend-tau.vercel.app/api/products/${id}`
       )
       .then((res) => {
         const deleteProduct = originalData.filter((item) => item.id !== id);

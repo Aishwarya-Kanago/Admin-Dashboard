@@ -13,7 +13,7 @@ const Product = () => {
   const getProductData = () => {
     axios
       .get(
-        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/${productId}/`
+        `https://admin-dashboard-backend-tau.vercel.app/api/products/${productId}/`
       )
       .then((res) => {
         const response = res.data;
@@ -45,7 +45,7 @@ const Product = () => {
   const updateHandler = (e) => {
     axios
       .put(
-        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/products/${productId}/`,
+        `https://admin-dashboard-backend-tau.vercel.app/api/products/${productId}/`,
         product
       )
       .then((res) => {

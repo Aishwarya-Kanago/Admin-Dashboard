@@ -64,7 +64,7 @@ const NewUser = () => {
   const createUserHandler = () => {
     axios
       .post(
-        "https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/",
+        "https://admin-dashboard-backend-tau.vercel.app/api/users/",
         newUser
       )
       .then((res) => {

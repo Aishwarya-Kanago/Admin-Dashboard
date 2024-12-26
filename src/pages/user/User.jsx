@@ -16,7 +16,7 @@ const User = () => {
   const getUserData = () => {
     axios
       .get(
-        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/${userID}/`
+        `https://admin-dashboard-backend-tau.vercel.app/api/users/${userID}/`
       )
       .then((res) => {
         const response = res.data;
@@ -65,7 +65,7 @@ const User = () => {
   const updateHandler = () => {
     axios
       .put(
-        `https://admin-dashboard-backend-9pv3nd99f-aishwaryas-projects-232113c3.vercel.app/api/users/${userID}/`,
+        `https://admin-dashboard-backend-tau.vercel.app/api/users/${userID}/`,
         data
       )
       .then((res) => {
