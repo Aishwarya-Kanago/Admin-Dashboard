@@ -14,7 +14,7 @@ import { UserContextProvider } from "./UserContext";
 
 function App() {
   return (
-    <Router basename={"/Admin-Dashboard"}>
+    <Router basename="/Admin-Dashboard">
       <UserContextProvider>
         <div className="home-page">
           <Sidebar />
