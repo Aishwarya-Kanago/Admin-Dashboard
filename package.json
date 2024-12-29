@@ -9,7 +9,6 @@
     "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint .",
-    "postbuild": "cpx dist/index.html dist/404.html",
     "preview": "vite build; vite preview --host"
   },
   "dependencies": {
