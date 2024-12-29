@@ -50,7 +50,7 @@ const ProductList = () => {
   const handleDelete = (id) => {
     axios
       .delete(
-        `https://admin-dashboard-backend-tau.vercel.app/api/products/${id}`
+        `https://admin-dashboard-backend-tau.vercel.app/api/products/${id}/`
       )
       .then((res) => {
         const deleteProduct = originalData.filter((item) => item.id !== id);

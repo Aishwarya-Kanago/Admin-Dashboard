@@ -29,7 +29,7 @@ const UserList = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://admin-dashboard-backend-tau.vercel.app/api/users/${id}`)
+      .delete(`https://admin-dashboard-backend-tau.vercel.app/api/users/${id}/`)
       .then((res) => {
         const newData = originalData?.filter((item) => item.id !== id);
         setUsersList(newData);
