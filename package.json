@@ -3,15 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Aishwarya-Kanago.github.io/Admin-Dashboard",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint .",
     "postbuild": "cpx dist/index.html dist/404.html",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite build; vite preview --host"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
