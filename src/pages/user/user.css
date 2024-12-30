@@ -45,6 +45,10 @@
   box-shadow: -1px 3px 7px 1px rgb(213 213 213 / 71%);
 }
 
+.user-main-info-dark {
+  border: 1px solid rgb(56, 56, 56);
+}
+
 .user-main-info svg {
   font-size: 16px;
 }
@@ -52,6 +56,10 @@
 .user-main-info-section-2 {
   margin-top: 30px;
   align-items: flex-start;
+}
+
+.user-main-info-section-2-dark {
+  border: 1px solid rgb(56, 56, 56);
 }
 
 .edit-userinfo {
@@ -104,6 +112,10 @@
   gap: 25px;
 }
 
+.edit-userinfo-dark {
+  border: 1px solid rgb(56, 56, 56);
+}
+
 .edit {
   font-size: 25px;
   font-weight: 500;
@@ -122,7 +134,7 @@
 }
 
 .update-btn {
-  background-color: teal;
+  background-color: teal !important;
   color: white;
   width: 10rem;
   border: none;
@@ -180,6 +192,15 @@
 
 .profile-pic-container .edit-profile-pic svg {
   cursor: pointer;
+  background: transparent !important;
+}
+
+.edit-icon-dark {
+  background: transparent !important;
+}
+
+.edit-profile-pic path {
+  color: black !important;
 }
 
 .user-info-input-flex {
@@ -202,6 +223,10 @@
   font-size: 14px;
   width: 20rem;
   font-weight: 500;
+}
+
+.user-info-input-flex input {
+  border: 1px solid rgb(115 115 115);
 }
 
 @media (max-width: 600px) {

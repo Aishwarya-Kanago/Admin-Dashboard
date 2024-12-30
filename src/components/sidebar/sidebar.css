@@ -9,6 +9,10 @@
   top: 0;
 }
 
+.main-menu-dark {
+  border-right: 1px solid rgb(56, 56, 56);
+}
+
 .main-menu:hover {
   box-shadow: 5px 5px 5px 5px rgb(195, 225, 235);
 }
@@ -80,6 +84,14 @@
 .logo img {
   height: 50px;
   border-radius: 50%;
+}
+
+.logo-light img {
+  mix-blend-mode: multiply;
+}
+
+.logo-dark img {
+  filter: invert();
 }
 
 .logo span {

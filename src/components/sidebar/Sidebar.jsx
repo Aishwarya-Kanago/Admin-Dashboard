@@ -19,9 +19,11 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import ReportIcon from "@mui/icons-material/Report";
 import MenuIcon from "@mui/icons-material/Menu";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const [menuOpen, setmenuOpen] = useState(false);
+  const theme = useSelector((state) => state.theme.currentTheme);
 
   return (
     <>
@@ -38,10 +40,14 @@ const Sidebar = () => {
       </ClickAwayListener>
 
       <div
-        className={`main-menu ${menuOpen ? "open" : ""}`}
+        className={`main-menu ${menuOpen ? "open" : ""} ${
+          theme === "dark" && "main-menu-dark"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="logo">
+        <div
+          className={`logo ${theme === "dark" ? "logo-dark" : "logo-light"}`}
+        >
           <img
             src="https://i.pinimg.com/550x/a9/2a/b5/a92ab56a225cef3bf88e624df4bcf025.jpg"
             alt="travel-logo"

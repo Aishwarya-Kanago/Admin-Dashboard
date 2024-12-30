@@ -11,8 +11,10 @@ import ProductCard from "./ProductCard";
 
 import React from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const ProductList = () => {
+  const theme = useSelector((state) => state.theme.currentTheme);
   const navigate = useNavigate();
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -113,10 +115,16 @@ const ProductList = () => {
         return (
           <div className="action-icons">
             <Link to={"/product/" + params.row.id} className="edit-link">
-              <EditIcon className="productList-edit-user" />
+              <EditIcon
+                className={`productList-edit-user ${
+                  theme === "dark" && "productList-edit-user-dark"
+                }`}
+              />
             </Link>
             <DeleteIcon
-              className="productList-delete-user"
+              className={`productList-delete-user ${
+                theme === "dark" && "productList-delete-user-dark"
+              }`}
               onClick={() => handleDelete(params.row.id)}
             />
           </div>
@@ -130,13 +138,21 @@ const ProductList = () => {
   return (
     <div className="product-table">
       <div className="userpage-topbar">
-        <div className="flex alignCenter justifySpaceBetween tableHeaderContainer">
+        <div
+          className={`flex alignCenter justifySpaceBetween tableHeaderContainer ${
+            theme === "dark" && "tableHeaderContainer-dark"
+          }`}
+        >
           <h3 className="page-title user-title">Product List</h3>
           <div className="flex alignCenter tableFilterContainer">
-            <div className="searchBarContainer">
+            <div className={`searchBarContainer ${
+                theme === "dark" && "searchBarContainer-dark"
+              }`}>
               <SearchIcon className="searchIcon" />
               <input
-                className="tableFilterContainer__search tableFilterContainer__filter"
+                className={`tableFilterContainer__search tableFilterContainer__filter ${
+                  theme === "dark" && "tableFilterContainer__filter-dark"
+                }`}
                 type="search"
                 placeholder="Search Product"
                 name="searchProduct"
@@ -147,7 +163,9 @@ const ProductList = () => {
             <div className="status-info">
               <label>Status</label>
               <select
-                className="status tableFilterContainer__filter"
+                className={`status tableFilterContainer__filter ${
+                  theme === "dark" && "tableFilterContainer__filter-dark"
+                }`}
                 name="statusInput"
                 value={filterInput.statusInput}
                 onChange={onChangeHandler}
@@ -159,7 +177,7 @@ const ProductList = () => {
               </select>
             </div>
             <button
-              className="addButton"
+              className={`addButton ${theme === "dark" && "addButton-dark"}`}
               onClick={() => {
                 navigate("/newproduct");
               }}
@@ -175,10 +193,9 @@ const ProductList = () => {
         sx={{
           height: 630,
           width: "100%",
-          padding: 0,
-          border: "1px solid #ddd",
-          borderRadius: "16px",
-          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+          border: `1px solid ${theme === "light" ? "#ddd" : "rgb(56, 56, 56)"}`,
+          borderRadius: theme === "light" ? "16px" : "",
+          boxShadow: theme === "light" && "0px 4px 12px rgba(0, 0, 0, 0.1)",
         }}
       >
         <DataGrid
@@ -188,7 +205,7 @@ const ProductList = () => {
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[5, 10]}
           checkboxSelection
-          sx={{ border: 0 }}
+          sx={{ "&, [class^=MuiDataGrid]": { border: "none" } }}
         />
       </Paper>
       <ProductCard data={filteredData} handleDelete={handleDelete} />

@@ -6,7 +6,8 @@
 
 .revenue-home,
 .sales-home,
-.cost-home {
+.cost-home,
+.profit-home {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -18,11 +19,33 @@
   box-shadow: 0px 1px 11px 0px rgb(207 207 207);
 }
 
-.sales-home {
+.revenue-home-dark,
+.cost-home-dark {
+  background: linear-gradient(to right, #007aff, #4e8ddb);
+}
+
+.revenue-home-dark *,
+.sales-home-dark *,
+.cost-home-dark *,
+.profit-home-dark * {
+  background: transparent !important;
+}
+
+.sales-home,
+.profit-home {
   background-color: #e6f1fd;
 }
 
-.moeny-container-title {
+.sales-home-dark,
+.profit-home-dark {
+  background: linear-gradient(
+    to right,
+    rgb(76 77 80 / 24%),
+    rgb(229 223 223 / 15%)
+  );
+}
+
+.money-container-title {
   font-size: 20px;
   font-weight: 500;
 }
@@ -65,7 +88,7 @@
     margin-left: 0;
   }
 
-  .moeny-container-title,
+  .money-container-title,
   .amount,
   .value-down {
     font-size: 16px;

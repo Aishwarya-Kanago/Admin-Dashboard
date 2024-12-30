@@ -2,9 +2,11 @@ import axios from "axios";
 import "./newUser.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NewUser = () => {
   const navigate = useNavigate();
+  const theme = useSelector((state) => state.theme.currentTheme);
   const [newUser, setnewUser] = useState({
     username: "",
     first_name: "",
@@ -85,7 +87,9 @@ const NewUser = () => {
     <div className="newuser-info">
       <h1 className="newuser-title">New User</h1>
       <form className="newuser-form">
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Username</label>
           <input
             type="text"
@@ -94,7 +98,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>First Name</label>
           <input
             type="text"
@@ -103,7 +109,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Last Name</label>
           <input
             type="text"
@@ -112,7 +120,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Email</label>
           <input
             type="text"
@@ -121,7 +131,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Designation</label>
           <input
             type="text"
@@ -130,7 +142,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Phone</label>
           <input
             type="text"
@@ -139,7 +153,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Address</label>
           <input
             type="text"
@@ -148,7 +164,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Gender</label>
           <div className="gender-options">
             <input
@@ -172,7 +190,9 @@ const NewUser = () => {
         <div className="newuser-item">
           <label>Status</label>
           <select
-            className="active-options"
+            className={`active-options ${
+              theme === "dark" && "active-options-dark"
+            }`}
             name="status"
             id="active"
             onChange={onchangeUser}
@@ -181,11 +201,15 @@ const NewUser = () => {
             <option className="no">Inactive</option>
           </select>
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Account Created At</label>
           <input type="date" name="account_open_date" onChange={onchangeUser} />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Transaction Amount</label>
           <input
             type="text"
@@ -194,7 +218,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label>Transaction Status</label>
           <input
             type="text"
@@ -203,7 +229,9 @@ const NewUser = () => {
             onChange={onchangeUser}
           />
         </div>
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label htmlFor="file">Upload Profile Photo</label>
           <input
             type="file"

@@ -30,6 +30,10 @@
   font-size: 14px;
 }
 
+.newuser-item-dark input {
+  border: 1px solid rgb(115 115 115);
+}
+
 .gender-options {
   display: flex;
   gap: 10px;
@@ -43,12 +47,16 @@
   font-size: 14px;
 }
 
+.active-options-dark {
+  border: 1px solid rgb(115 115 115);
+}
+
 .newuser-create-btn {
   width: 15%;
   padding: 8px;
   border-radius: 8px;
   color: white;
-  background-color: #4caf50;
+  background-color: #4caf50 !important;
   border: none;
   margin-top: 5px;
   cursor: pointer;

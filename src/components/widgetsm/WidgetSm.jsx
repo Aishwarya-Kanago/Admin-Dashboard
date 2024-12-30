@@ -3,17 +3,23 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import "./widgetsm.css";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../UserContext";
+import { useSelector } from "react-redux";
 
 const WidgetSm = () => {
   const data = useData();
   const navigate = useNavigate();
+  const theme = useSelector((state) => state.theme.currentTheme);
 
   const handleClick = (id) => {
     navigate(`/user/${id}`);
   };
 
   return (
-    <div className="new-joinee-list">
+    <div
+      className={`new-joinee-list ${
+        theme === "dark" && "new-joinee-list-dark"
+      }`}
+    >
       <div className="widgetsm-title">
         <h3 className="sub-title">New Members</h3>
       </div>
@@ -30,7 +36,9 @@ const WidgetSm = () => {
               </div>
             </div>
             <button
-              className="display-btn"
+              className={`display-btn ${
+                theme === "dark" && "display-btn-dark"
+              }`}
               onClick={() => {
                 handleClick(user.id);
               }}

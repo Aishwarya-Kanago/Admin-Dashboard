@@ -2,10 +2,12 @@ import axios from "axios";
 import "./newproduct.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NewProduct = () => {
   const navigate = useNavigate();
   const [newProduct, setnewProduct] = useState({});
+  const theme = useSelector((state) => state.theme.currentTheme);
 
   const onChangeProduct = (e) => {
     const currentProduct = { ...newProduct };
@@ -56,7 +58,9 @@ const NewProduct = () => {
         <h1>New Product</h1>
       </div>
       <div className="newuser-form">
-        <div className="newuser-item">
+        <div
+          className={`newuser-item ${theme === "dark" && "newuser-item-dark"}`}
+        >
           <label htmlFor="file">Image</label>
           <input
             type="file"

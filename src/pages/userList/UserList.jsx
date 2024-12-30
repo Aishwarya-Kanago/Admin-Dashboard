@@ -10,8 +10,10 @@ import axios from "axios";
 import { useList } from "../../UserContext";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import UserCard from "./UserCard";
+import { useSelector } from "react-redux";
 
 const UserList = () => {
+  const theme = useSelector((state) => state.theme.currentTheme);
   const navigate = useNavigate();
   const { usersList: userList, setUsersList } = useList();
   const [originalData, setOriginalData] = useState(userList);
@@ -90,10 +92,16 @@ const UserList = () => {
         return (
           <div className="action-icons">
             <Link to={"/user/" + params.row.id} className="edit-link">
-              <EditIcon className="userList-edit-user" />
+              <EditIcon
+                className={`userList-edit-user ${
+                  theme === "dark" && "userList-edit-user-dark"
+                }`}
+              />
             </Link>
             <DeleteIcon
-              className="userList-delete-user"
+              className={`userList-delete-user ${
+                theme === "dark" && "userList-delete-user-dark"
+              } `}
               onClick={() => handleDelete(params.row.id)}
             />
           </div>
@@ -107,13 +115,23 @@ const UserList = () => {
   return (
     <div className="data-table">
       <div className="userpage-topbar">
-        <div className="flex alignCenter justifySpaceBetween tableHeaderContainer">
+        <div
+          className={`flex alignCenter justifySpaceBetween tableHeaderContainer ${
+            theme === "dark" && "tableHeaderContainer-dark"
+          }`}
+        >
           <h3 className="page-title user-title">Users</h3>
           <div className="flex alignCenter tableFilterContainer">
-            <div className="searchBarContainer">
+            <div
+              className={`searchBarContainer ${
+                theme === "dark" && "searchBarContainer-dark"
+              }`}
+            >
               <SearchIcon className="searchIcon" />
               <input
-                className="tableFilterContainer__search tableFilterContainer__filter"
+                className={`tableFilterContainer__search tableFilterContainer__filter ${
+                  theme === "dark" && "tableFilterContainer__filter-dark"
+                }`}
                 type="search"
                 placeholder="Search User"
                 name="searchUSer"
@@ -124,7 +142,9 @@ const UserList = () => {
             <div className="status-info">
               <label>Status</label>
               <select
-                className="status tableFilterContainer__filter"
+                className={`status tableFilterContainer__filter ${
+                  theme === "dark" && "tableFilterContainer__filter-dark"
+                }`}
                 name="statusInput"
                 value={filterInput.statusInput}
                 onChange={onChangeHandler}
@@ -135,7 +155,7 @@ const UserList = () => {
               </select>
             </div>
             <button
-              className="addButton"
+              className={`addButton ${theme === "dark" && "addButton-dark"}`}
               onClick={() => {
                 navigate("/newUser");
               }}
@@ -151,10 +171,9 @@ const UserList = () => {
         sx={{
           height: 630,
           width: "100%",
-          padding: 0,
-          border: "1px solid #ddd",
-          borderRadius: "16px",
-          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+          border: `2px solid ${theme === "light" ? "#ddd" : "rgb(56, 56, 56)"}`,
+          borderRadius: theme === "light" ? "16px" : "",
+          boxShadow: theme === "light" && "0px 4px 12px rgba(0, 0, 0, 0.1)",
         }}
       >
         <DataGrid
@@ -164,7 +183,9 @@ const UserList = () => {
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[5, 10]}
           checkboxSelection
-          sx={{ "&, [class^=MuiDataGrid]": { border: "none" } }}
+          sx={{
+            "&, [class^=MuiDataGrid]": { border: "none" },
+          }}
         />
       </Paper>
       <UserCard data={filteredData} handleDelete={handleDelete} />

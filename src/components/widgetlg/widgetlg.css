@@ -55,19 +55,19 @@ td {
   padding: 4px 12px 4px 12px;
 }
 
-.widgetlg-btnApproved {
-  background-color: #d6ebdc;
-  color: green;
+td .widgetlg-btnApproved {
+  background-color: #d6ebdc !important;
+  color: green !important;
 }
 
-.widgetlg-btnDeclined {
-  background-color: #ebcad0;
-  color: crimson;
+td .widgetlg-btnDeclined {
+  background-color: #ebcad0 !important;
+  color: crimson !important;
 }
 
-.widgetlg-btnPending {
-  background-color: #c4ddf7;
-  color: #0065d1;
+td .widgetlg-btnPending {
+  background-color: #c4ddf7 !important;
+  color: #0065d1 !important;
 }
 
 @media (max-width: 600px) {

@@ -11,12 +11,15 @@ import React from "react";
 import Topbar from "./components/topbar/Topbar";
 import Product from "./pages/product/Product";
 import { UserContextProvider } from "./UserContext";
+import { useSelector } from "react-redux";
 
 function App() {
+  const theme = useSelector((state) => state.theme.currentTheme);
+
   return (
     <Router basename="/Admin-Dashboard">
       <UserContextProvider>
-        <div className="home-page">
+        <div className={`home-page ${theme === "dark" && "darkMode"} `}>
           <Sidebar />
           <div className="parent-topbar">
             <Topbar />

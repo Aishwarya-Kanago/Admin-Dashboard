@@ -1,16 +1,23 @@
 import React from "react";
 import "./widgetlg.css";
 import { useTransaction } from "../../UserContext";
+import { useSelector } from "react-redux";
 
 const WidgetLg = () => {
   const transactionData = useTransaction();
+  const theme = useSelector((state) => state.theme.currentTheme);
+
   const Button = ({ type }) => {
     return (
       <button className={"widgetlg-btn widgetlg-btn" + type}>{type}</button>
     );
   };
   return (
-    <div className="latest-transactions">
+    <div
+      className={`latest-transactions ${
+        theme === "dark" && "latest-transactions-dark"
+      }`}
+    >
       <div className="widgetlg-title">
         <h3 className="sub-title">Lastest Transactions</h3>
       </div>

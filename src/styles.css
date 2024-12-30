@@ -36,6 +36,22 @@
   justify-content: space-between;
 }
 
+/* ################# Dark Mode ######################## */
+
+.darkMode,
+.darkMode * {
+  background-color: #010212;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.new-joinee-list-dark,
+.chart-container-dark,
+.latest-transactions-dark,
+.tableHeaderContainer-dark {
+  border: 2px solid rgb(56, 56, 56);
+}
+
 @media (max-width: 600px) {
   .home-page {
     display: block;

@@ -21,6 +21,10 @@
   height: fit-content;
 }
 
+.product-col-1-dark {
+  border: 1px solid rgb(56, 56, 56);
+}
+
 .product-top {
   display: flex;
   gap: 20px;
@@ -191,6 +195,10 @@
 
 .product-details .tags .tag:nth-child(2) {
   background-color: darkslateblue;
+}
+
+.product-edit-container-dark {
+  border: 1px solid rgb(56, 56, 56);
 }
 
 @media (max-width: 600px) {

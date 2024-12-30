@@ -15,7 +15,6 @@ const Home = () => {
           title="Active User Details"
           data={userData}
           datakey="Active User"
-          grid
         />
         <div className="new-joinee-tab">
           <WidgetSm />

@@ -12,7 +12,15 @@
   margin-bottom: 1rem;
 }
 
+.topbar-fields-dark {
+  border-bottom-color: rgb(56, 56, 56);
+}
+
 .topbar-fields img {
   height: 30px;
   border-radius: 50%;
+}
+
+.icon-dark path{
+  color: rgb(57, 196, 251) !important;
 }

@@ -45,6 +45,10 @@
   color: white;
 }
 
+.display-btn-dark * {
+  background: transparent !important;
+}
+
 @media (max-width: 600px) {
   .new-joinee-list {
     align-items: flex-start;

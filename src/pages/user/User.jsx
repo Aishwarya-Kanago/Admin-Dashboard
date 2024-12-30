@@ -8,10 +8,12 @@ import React, { useEffect, useState } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const User = () => {
   const [data, setData] = useState({});
   const { userID } = useParams();
+  const theme = useSelector((state) => state.theme.currentTheme);
 
   const getUserData = () => {
     axios
@@ -84,7 +86,11 @@ const User = () => {
 
         <div className="user">
           <div className="user-info-col-1">
-            <div className="user-main-info">
+            <div
+              className={`user-main-info ${
+                theme === "dark" && "user-main-info-dark"
+              }`}
+            >
               <div className="profile-pic-container">
                 <img
                   className="profile-img"
@@ -92,7 +98,12 @@ const User = () => {
                   alt="user-img"
                 />
                 <div className="edit-profile-pic">
-                  <label htmlFor="file">
+                  <label
+                    htmlFor="file"
+                    className={`edit-icon ${
+                      theme === "dark" && "edit-icon-dark"
+                    }`}
+                  >
                     <CreateIcon />
                   </label>
                   <input
@@ -111,7 +122,11 @@ const User = () => {
                 <p className="role">{data.profile?.designation}</p>
               </div>
             </div>
-            <div className="user-main-info user-main-info-section-2">
+            <div
+              className={`user-main-info user-main-info-section-2 ${
+                theme === "dark" && "user-main-info-section-2-dark"
+              }`}
+            >
               <div className="account-details">
                 <p className="details-sub-title">Account Details</p>
                 <div className="account-name">
@@ -152,11 +167,19 @@ const User = () => {
             </div>
           </div>
 
-          <div className="edit-userinfo">
+          <div
+            className={`edit-userinfo ${
+              theme === "dark" && "edit-userinfo-dark"
+            }`}
+          >
             <div className="edit-box">
               <p className="edit">Edit</p>
               <div className="user-info-input">
-                <div className="user-info-input-flex">
+                <div
+                  className={`user-info-input-flex ${
+                    theme === "dark" && "user-info-input-flex"
+                  }`}
+                >
                   <span>User Name</span>
                   <input
                     type="text"

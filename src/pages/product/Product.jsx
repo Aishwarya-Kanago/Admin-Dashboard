@@ -5,10 +5,12 @@ import Chart from "../chart/Chart";
 import { productData } from "../../UserData";
 import CreateIcon from "@mui/icons-material/Create";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Product = () => {
   const [product, setProduct] = useState({});
   const { productId } = useParams();
+  const theme = useSelector((state) => state.theme.currentTheme);
 
   const getProductData = () => {
     axios
@@ -61,7 +63,11 @@ const Product = () => {
         <h1 className="page-title">Product</h1>
       </div>
       <div className="product-top">
-        <div className="user-main-info product-col-1">
+        <div
+          className={`user-main-info product-col-1 ${
+            theme === "dark" && "product-col-1-dark"
+          }`}
+        >
           <div className="profile-pic-container">
             <img
               src={product.product_pic}
@@ -69,7 +75,10 @@ const Product = () => {
               className="product-img"
             />
             <div className="edit-profile-pic">
-              <label htmlFor="file">
+              <label
+                htmlFor="file"
+                className={`edit-icon ${theme === "dark" && "edit-icon-dark"}`}
+              >
                 <CreateIcon />
               </label>
               <input
@@ -103,7 +112,11 @@ const Product = () => {
           </div>
         </div>
         <div className="product-col-2">
-          <div className="edit-userinfo product-edit-container">
+          <div
+            className={`edit-userinfo product-edit-container ${
+              theme === "dark" && "product-edit-container-dark"
+            }`}
+          >
             <form className="product-edit-form">
               <div className="user-info-input-flex">
                 <label>Product Name</label>
@@ -140,7 +153,7 @@ const Product = () => {
                 <input
                   type="text"
                   placeholder="220"
-                  name="stock"
+                  name="price"
                   value={`$ ${product.price}`}
                   onChange={onChangeHandler}
                 />

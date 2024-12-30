@@ -39,9 +39,17 @@
   color: #007aff;
 }
 
-.userList-delete-user,
-.productList-delete-user {
-  color: rgb(192, 0, 38);
+.userList-edit-user-dark path {
+  color: #007aff !important;
+}
+
+.action-icons .userList-delete-user,
+.action-icons .productList-delete-user {
+  color: rgb(192, 0, 38) !important;
+}
+
+.userList-delete-user-dark path {
+  color: rgb(192, 0, 38) !important;
 }
 
 .userFlex {
@@ -81,6 +89,10 @@
   font-size: 14px;
 }
 
+.tableFilterContainer__filter-dark {
+  background: rgb(41 39 39) !important;
+}
+
 .tableFilterContainer .status-info .status {
   margin-left: 12px;
   font-size: 14px;
@@ -99,9 +111,14 @@
   gap: 2px;
 }
 
+.searchBarContainer-dark {
+  background: rgb(41 39 39) !important;
+}
+
 .searchIcon {
   font-size: 1.2rem !important;
   color: gray;
+  background: transparent !important;
 }
 
 .addButton {
@@ -119,6 +136,10 @@
 
 .addButton svg {
   font-size: 20px;
+}
+
+.addButton-dark svg {
+  background: transparent;
 }
 
 .user-card {
