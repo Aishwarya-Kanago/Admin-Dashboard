@@ -146,6 +146,10 @@
   display: none;
 }
 
+.user-card .css-r3djoj-MuiTouchRipple-root {
+  background-color: transparent;
+}
+
 @media (max-width: 600px) {
   .tableHeaderContainer {
     padding: 4px;

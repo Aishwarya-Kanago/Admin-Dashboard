@@ -68,10 +68,9 @@
     font-size: 12px;
   }
 
-  .new-joinee-info {
+  .new-joinee-info-mobile {
     gap: 20px;
     width: 100%;
-    justify-content: space-between;
   }
 
   .display-btn svg {

@@ -105,7 +105,8 @@
 
   .revenue-home,
   .sales-home,
-  .cost-home {
+  .cost-home,
+  .profit-home {
     padding: 16px;
   }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./sidebar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import HomeIcon from "@mui/icons-material/Home";
 import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
@@ -56,12 +56,12 @@ const Sidebar = () => {
         </div>
         <div className="dashboard">
           <h3>Dashboard</h3>
-          <Link to="/" className="link">
+          <NavLink to="/" className="link">
             <div className="home">
               <HomeIcon />
               <span>Home</span>
             </div>
-          </Link>
+          </NavLink>
           <div className="analytics">
             <AnalyticsOutlinedIcon />
             <span>Analytics</span>
@@ -73,19 +73,19 @@ const Sidebar = () => {
         </div>
         <div className="quick-menu">
           <h3>Quick Menu</h3>
-          <Link to="/userList" className="link">
+          <NavLink to="/userList" className="link">
             <div className="users">
               <PersonIcon />
               <span>Users</span>
             </div>
-          </Link>
+          </NavLink>
 
-          <Link to="/products" className="link">
+          <NavLink to="/products" className="link">
             <div className="products">
               <InventoryIcon />
               <span>Products</span>
             </div>
-          </Link>
+          </NavLink>
           <div className="transactions">
             <AttachMoneyIcon />
             <span>Transactions</span>

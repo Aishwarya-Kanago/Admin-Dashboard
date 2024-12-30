@@ -103,6 +103,12 @@
   display: none;
 }
 
+.link.active {
+  font-size: 18px;
+  font-weight: 600;
+  color: #007aff !important;
+}
+
 @media (max-width: 600px) {
   .nav-bar-icon {
     display: inline-block;
