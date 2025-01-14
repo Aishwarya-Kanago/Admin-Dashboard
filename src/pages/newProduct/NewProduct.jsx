@@ -3,6 +3,7 @@ import "./newproduct.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BASEAPIURL } from "../../constants";
 
 const NewProduct = () => {
   const navigate = useNavigate();
@@ -33,10 +34,7 @@ const NewProduct = () => {
 
   const createProduct = () => {
     axios
-      .post(
-        "https://admin-dashboard-backend-tau.vercel.app/api/products/",
-        newProduct
-      )
+      .post(`${BASEAPIURL}/products/`, newProduct)
       .then((res) => {
         if (res.status === 201) {
           alert("Product created Sucessfully");

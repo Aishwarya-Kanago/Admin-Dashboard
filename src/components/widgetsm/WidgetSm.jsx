@@ -10,8 +10,8 @@ const WidgetSm = () => {
   const navigate = useNavigate();
   const theme = useSelector((state) => state.theme.currentTheme);
 
-  const handleClick = (id) => {
-    navigate(`/user/${id}`);
+  const handleClick = (_id) => {
+    navigate(`/user/${_id}`);
   };
 
   return (
@@ -40,7 +40,7 @@ const WidgetSm = () => {
                 theme === "dark" && "display-btn-dark"
               }`}
               onClick={() => {
-                handleClick(user.id);
+                handleClick(user._id);
               }}
             >
               <VisibilityIcon />

@@ -6,6 +6,7 @@ import { productData } from "../../UserData";
 import CreateIcon from "@mui/icons-material/Create";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { BASEAPIURL } from "../../constants";
 
 const Product = () => {
   const [product, setProduct] = useState({});
@@ -13,14 +14,10 @@ const Product = () => {
   const theme = useSelector((state) => state.theme.currentTheme);
 
   const getProductData = () => {
-    axios
-      .get(
-        `https://admin-dashboard-backend-tau.vercel.app/api/products/${productId}/`
-      )
-      .then((res) => {
-        const response = res.data;
-        setProduct(response);
-      });
+    axios.get(`${BASEAPIURL}/products/${productId}/`).then((res) => {
+      const response = res.data;
+      setProduct(response);
+    });
   };
 
   useEffect(() => {
@@ -45,16 +42,11 @@ const Product = () => {
   };
 
   const updateHandler = (e) => {
-    axios
-      .put(
-        `https://admin-dashboard-backend-tau.vercel.app/api/products/${productId}/`,
-        product
-      )
-      .then((res) => {
-        if (res.status == 200) {
-          alert("Product updated Sucessfully");
-        }
-      });
+    axios.put(`${BASEAPIURL}/products/${productId}/`, product).then((res) => {
+      if (res.status == 200) {
+        alert("Product updated Sucessfully");
+      }
+    });
   };
 
   return (
@@ -154,7 +146,7 @@ const Product = () => {
                   type="text"
                   placeholder="220"
                   name="price"
-                  value={`$ ${product.price}`}
+                  value={`${product.price}`}
                   onChange={onChangeHandler}
                 />
               </div>

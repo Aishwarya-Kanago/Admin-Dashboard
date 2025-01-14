@@ -3,6 +3,7 @@ import "./newUser.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BASEAPIURL } from "../../constants";
 
 const NewUser = () => {
   const navigate = useNavigate();
@@ -65,10 +66,7 @@ const NewUser = () => {
 
   const createUserHandler = () => {
     axios
-      .post(
-        "https://admin-dashboard-backend-tau.vercel.app/api/users/",
-        newUser
-      )
+      .post(`${BASEAPIURL}/users/`, newUser)
       .then((res) => {
         if (res.status === 201) {
           alert("User created Sucessfully");

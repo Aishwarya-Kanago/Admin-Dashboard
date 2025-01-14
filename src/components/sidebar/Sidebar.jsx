@@ -62,6 +62,21 @@ const Sidebar = () => {
               <span>Home</span>
             </div>
           </NavLink>
+          <NavLink to="/userList" className="link">
+            <div className="users">
+              <PersonIcon />
+              <span>Users</span>
+            </div>
+          </NavLink>
+          <NavLink to="/products" className="link">
+            <div className="products">
+              <InventoryIcon />
+              <span>Products</span>
+            </div>
+          </NavLink>
+        </div>
+        <div className="quick-menu">
+          <h3>Quick Menu</h3>
           <div className="analytics">
             <AnalyticsOutlinedIcon />
             <span>Analytics</span>
@@ -70,22 +85,6 @@ const Sidebar = () => {
             <TrendingUpIcon />
             <span>Sales</span>
           </div>
-        </div>
-        <div className="quick-menu">
-          <h3>Quick Menu</h3>
-          <NavLink to="/userList" className="link">
-            <div className="users">
-              <PersonIcon />
-              <span>Users</span>
-            </div>
-          </NavLink>
-
-          <NavLink to="/products" className="link">
-            <div className="products">
-              <InventoryIcon />
-              <span>Products</span>
-            </div>
-          </NavLink>
           <div className="transactions">
             <AttachMoneyIcon />
             <span>Transactions</span>
