@@ -4,7 +4,7 @@ import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
-import NewProduct from "./pages/newProduct/newProduct";
+import NewProduct from "./pages/newProduct/NewProduct";
 import "./styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";

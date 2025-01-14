@@ -9,6 +9,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { BASEAPIURL } from "../../constants";
 
 const User = () => {
   const [data, setData] = useState({});
@@ -18,7 +19,7 @@ const User = () => {
   const getUserData = () => {
     axios
       .get(
-        `https://admin-dashboard-backend-tau.vercel.app/api/users/${userID}/`
+        `${BASEAPIURL}/users/${userID}/`
       )
       .then((res) => {
         const response = res.data;
@@ -67,7 +68,7 @@ const User = () => {
   const updateHandler = () => {
     axios
       .put(
-        `https://admin-dashboard-backend-tau.vercel.app/api/users/${userID}/`,
+        `${BASEAPIURL}/users/${userID}/`,
         data
       )
       .then((res) => {

@@ -70,7 +70,7 @@ export default function ProductCard({ data, handleDelete }) {
                 size="small"
                 color="error"
                 className="delete-button"
-                onClick={() => handleDelete(item.id)}
+                onClick={() => handleDelete(item._id)}
               >
                 Delete
               </Button>

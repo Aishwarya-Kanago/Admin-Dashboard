@@ -62,7 +62,7 @@ export default function UserCard({ data, handleDelete }) {
               </div>
             </CardContent>
             <CardActions sx={{ padding: "0 0 16px 0" }}>
-              <Link to={"/user/" + item.id}>
+              <Link to={"/user/" + item._id}>
                 <Button className="edit-button" size="small">
                   Edit
                 </Button>
@@ -71,7 +71,7 @@ export default function UserCard({ data, handleDelete }) {
                 size="small"
                 color="error"
                 className="delete-button"
-                onClick={() => handleDelete(item.id)}
+                onClick={() => handleDelete(item._id)}
               >
                 Delete
               </Button>

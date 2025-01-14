@@ -12,6 +12,7 @@ import ProductCard from "./ProductCard";
 import React from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { BASEAPIURL } from "../../constants";
 
 const ProductList = () => {
   const theme = useSelector((state) => state.theme.currentTheme);
@@ -24,40 +25,37 @@ const ProductList = () => {
     statusInput: "All",
   });
   const getProductData = () => {
-    axios
-      .get("https://admin-dashboard-backend-tau.vercel.app/api/products/")
-      .then((res) => {
-        const response = res.data;
-        const requiredFields = [];
-        response.forEach((product) => {
-          const newProductObj = {
-            id: product.id,
-            name: product.name,
-            stock: product.stock,
-            status: product.status,
-            price: `$ ${product.price}`,
-            product_pic: product.product_pic,
-          };
-          requiredFields.push(newProductObj);
-        });
-        setOriginalData(requiredFields);
-        setFilteredData(requiredFields);
+    axios.get(`${BASEAPIURL}/products/`).then((res) => {
+      const response = res.data;
+      const requiredFields = [];
+      response.forEach((product) => {
+        const newProductObj = {
+          _id: product._id,
+          name: product.name,
+          stock: product.stock,
+          status: product.status,
+          price: `$ ${product.price}`,
+          product_pic: product.product_pic,
+        };
+        requiredFields.push(newProductObj);
       });
+      setOriginalData(requiredFields);
+      setFilteredData(requiredFields);
+    });
   };
 
   useEffect(() => {
     getProductData();
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = (_id) => {
     axios
-      .delete(
-        `https://admin-dashboard-backend-tau.vercel.app/api/products/${id}/`
-      )
+      .delete(`${BASEAPIURL}/products/${_id}/`)
       .then((res) => {
-        const deleteProduct = originalData.filter((item) => item.id !== id);
+        const deleteProduct = originalData.filter((item) => item._id !== _id);
         setFilteredData(deleteProduct);
         setOriginalData(deleteProduct);
+        alert("deleted successfully");
       })
       .catch((err) => {
         alert(`Something went wrong ${err}`);
@@ -86,7 +84,7 @@ const ProductList = () => {
   }, [filterInput]);
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.3 },
+    { field: "_id", headerName: "ID", flex: 0.3 },
     {
       field: "product",
       headerName: "Product",
@@ -114,7 +112,7 @@ const ProductList = () => {
       renderCell: (params) => {
         return (
           <div className="action-icons">
-            <Link to={"/product/" + params.row.id} className="edit-link">
+            <Link to={"/product/" + params.row._id} className="edit-link">
               <EditIcon
                 className={`productList-edit-user ${
                   theme === "dark" && "productList-edit-user-dark"
@@ -125,7 +123,7 @@ const ProductList = () => {
               className={`productList-delete-user ${
                 theme === "dark" && "productList-delete-user-dark"
               }`}
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </div>
         );
@@ -145,9 +143,11 @@ const ProductList = () => {
         >
           <h3 className="page-title user-title">Product List</h3>
           <div className="flex alignCenter tableFilterContainer">
-            <div className={`searchBarContainer ${
+            <div
+              className={`searchBarContainer ${
                 theme === "dark" && "searchBarContainer-dark"
-              }`}>
+              }`}
+            >
               <SearchIcon className="searchIcon" />
               <input
                 className={`tableFilterContainer__search tableFilterContainer__filter ${
@@ -206,6 +206,7 @@ const ProductList = () => {
           pageSizeOptions={[5, 10]}
           checkboxSelection
           sx={{ "&, [class^=MuiDataGrid]": { border: "none" } }}
+          getRowId={(row) => row._id}
         />
       </Paper>
       <ProductCard data={filteredData} handleDelete={handleDelete} />

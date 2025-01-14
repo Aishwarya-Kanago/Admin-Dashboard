@@ -11,6 +11,7 @@ import { useList } from "../../UserContext";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import UserCard from "./UserCard";
 import { useSelector } from "react-redux";
+import { BASEAPIURL } from "../../constants";
 
 const UserList = () => {
   const theme = useSelector((state) => state.theme.currentTheme);
@@ -29,11 +30,11 @@ const UserList = () => {
     setFilteredData(userList);
   }, [userList]);
 
-  const handleDelete = (id) => {
+  const handleDelete = (_id) => {
     axios
-      .delete(`https://admin-dashboard-backend-tau.vercel.app/api/users/${id}/`)
+      .delete(`${BASEAPIURL}/users/${_id}/`)
       .then((res) => {
-        const newData = originalData?.filter((item) => item.id !== id);
+        const newData = originalData?.filter((item) => item._id !== _id);
         setUsersList(newData);
         alert("deleted successfully");
         window.location.reload();
@@ -66,7 +67,7 @@ const UserList = () => {
   }, [filterInput]);
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.3, borderRadius: "16px" },
+    { field: "_id", headerName: "ID", flex: 0.3, borderRadius: "16px" },
     {
       field: "user",
       headerName: "User name",
@@ -91,7 +92,7 @@ const UserList = () => {
       renderCell: (params) => {
         return (
           <div className="action-icons">
-            <Link to={"/user/" + params.row.id} className="edit-link">
+            <Link to={"/user/" + params.row._id} className="edit-link">
               <EditIcon
                 className={`userList-edit-user ${
                   theme === "dark" && "userList-edit-user-dark"
@@ -102,7 +103,7 @@ const UserList = () => {
               className={`userList-delete-user ${
                 theme === "dark" && "userList-delete-user-dark"
               } `}
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </div>
         );
@@ -186,6 +187,7 @@ const UserList = () => {
           sx={{
             "&, [class^=MuiDataGrid]": { border: "none" },
           }}
+          getRowId={(row) => row._id}
         />
       </Paper>
       <UserCard data={filteredData} handleDelete={handleDelete} />

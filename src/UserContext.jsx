@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import React from "react";
+import { BASEAPIURL } from "./constants";
 
 const UserDataContext = createContext([]);
 const UserTransactionContext = createContext([]);
@@ -30,35 +31,33 @@ export const UserContextProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
 
   const getUserData = () => {
-    axios
-      .get("https://admin-dashboard-backend-tau.vercel.app/api/users/")
-      .then((res) => {
-        const response = res.data;
-        setData(response);
+    axios.get(`${BASEAPIURL}/users/`).then((res) => {
+      const response = res.data;
+      setData(response);
 
-        const sortedData = response.sort((a, b) => b.id - a.id);
-        const activeUsers = sortedData.slice(0, 6);
-        setFilteredData(activeUsers);
+      const sortedData = response.sort((a, b) => b._id - a._id);
+      const activeUsers = sortedData.slice(0, 6);
+      setFilteredData(activeUsers);
 
-        const topTransations = response
-          .sort((a, b) => b.profile?.transaction - a.profile?.transaction)
-          .slice(0, 6);
-        setTransaction(topTransations);
+      const topTransations = response
+        .sort((a, b) => b.profile?.transaction - a.profile?.transaction)
+        .slice(0, 6);
+      setTransaction(topTransations);
 
-        const processedData = [];
-        response.forEach((user) => {
-          const newUserObj = {
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            status: user.profile?.status,
-            transaction: `$ ${user.profile?.transaction}`,
-            profile_pic: user.profile?.profile_pic,
-          };
-          processedData.push(newUserObj);
-        });
-        setUsersList(processedData);
+      const processedData = [];
+      response.forEach((user) => {
+        const newUserObj = {
+          _id: user._id,
+          username: user.username,
+          email: user.email,
+          status: user.profile?.status,
+          transaction: `$ ${user.profile?.transaction}`,
+          profile_pic: user.profile?.profile_pic,
+        };
+        processedData.push(newUserObj);
       });
+      setUsersList(processedData);
+    });
   };
 
   useEffect(() => {
